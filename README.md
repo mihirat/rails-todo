@@ -38,5 +38,12 @@ rm -rf todo
 echo /vendor/bundle >> .gitignore
 
 docker-compose -f docker-compose.db.yml up 
-rails db:create db:migrate 
+bundle exec rails db:create
+bundle exec rails s
+```
+
+## logs
+
+```
+bundle exec rails g scaffold task title description:text state:integer due_at:datetime deleted_at:datetime
 ```
