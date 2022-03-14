@@ -1,0 +1,38 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Tasks</h1>
+
+<div id="tasks">
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>State</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td>
+            <%= link_to task.title, task %><br/>
+            <%= task.description %>
+          </td>
+          <td>
+            <% task.state %>
+            <% if task.state == "initial" %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            <% else %>
+              <%= task.state %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br/>
+<%= link_to "New task", new_task_path %>
